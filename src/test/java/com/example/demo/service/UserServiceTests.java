@@ -102,4 +102,22 @@ public class UserServiceTests {
         verify(fakeRepo, times(1)).deleteUser(userId);
     }
 
+    /**
+     * Test for the removeUser method when user does not exist
+     */
+    @Test
+    void testRemoveUserWhenUserDoesNotExist() {
+        // Arrange
+        long userId = 999L;
+        when(fakeRepo.deleteUser(userId)).thenReturn(null);
+
+        // Act
+        String result = userService.removeUser(userId);
+
+        // Assert
+        assertNull(result);
+        verify(fakeRepo, times(1)).deleteUser(userId);
+    }
+
+
 }
