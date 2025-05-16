@@ -30,4 +30,20 @@ public class FakeRepo implements FakeRepoInterface {
         users.add(user);
         return name;
     }
+
+    /**
+     * Finds a user by their ID
+     *
+     * @param id The user's ID
+     * @return The name of the found user, or null if not found
+     */
+    @Override
+    public String findUserById(long id) {
+        for (User user : users) {
+            if (user.getId() == id) {
+                return user.getName();
+            }
+        }
+        return null;
+    }
 }
