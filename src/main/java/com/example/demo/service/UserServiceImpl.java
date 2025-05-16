@@ -42,7 +42,20 @@ public class UserServiceImpl implements UserService{
         return addedName;
     }
 
-
-
-
+    /**
+     * Gets a user by ID
+     *
+     * @param id The user's ID
+     * @return The name of the user, or null if user not found
+     */
+    @Override
+    public String getUser(long id) {
+        String userName = fakeRepo.findUserById(id);
+        if (userName != null) {
+            System.out.println("Greetings " + userName);
+        } else {
+            System.out.println("User with ID " + id + " not found");
+        }
+        return userName;
+    }
 }
