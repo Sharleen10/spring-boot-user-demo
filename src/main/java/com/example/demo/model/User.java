@@ -29,4 +29,58 @@ public class User {
         this.surname = surname;
     }
 
+    /**
+     * Get the user's ID
+     *
+     * @return The user's ID
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * Set the user's ID
+     *
+     * @param id The user's ID
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    /**
+     * Get the user's first name
+     *
+     * @return The user's first name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Set the user's first name
+     *
+     * @param name The user's first name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Get the user's last name
+     *
+     * @return The user's last name
+     */
+    public String getSurname() {
+        return surname;
+    }
+
+    /**
+     * Set the user's last name
+     *
+     * @param surname The user's last name
+     */
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
 }
