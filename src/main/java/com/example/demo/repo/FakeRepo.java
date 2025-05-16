@@ -30,4 +30,46 @@ public class FakeRepo implements FakeRepoInterface {
         users.add(user);
         return name;
     }
+
+    /**
+     * Finds a user by their ID
+     *
+     * @param id The user's ID
+     * @return The name of the found user, or null if not found
+     */
+    @Override
+    public String findUserById(long id) {
+        for (User user : users) {
+            if (user.getId() == id) {
+                return user.getName();
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Deletes a user from the repository
+     *
+     * @param id The ID of the user to delete
+     * @return The name of the deleted user, or null if not found
+     */
+    @Override
+    public String deleteUser(long id) {
+        User userToRemove = null;
+        String userName = null;
+
+        for (User user : users) {
+            if (user.getId() == id) {
+                userToRemove = user;
+                userName = user.getName();
+                break;
+            }
+        }
+
+        if (userToRemove != null) {
+            users.remove(userToRemove);
+        }
+
+        return userName;
+    }
 }
