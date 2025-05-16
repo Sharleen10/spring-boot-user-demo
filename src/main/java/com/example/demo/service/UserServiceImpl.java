@@ -26,6 +26,23 @@ public class UserServiceImpl implements UserService{
         this.fakeRepo = fakeRepo;
     }
 
+    /**
+     * Adds a new user with a generated ID
+     *
+     * @param name The user's first name
+     * @param surname The user's last name
+     * @return The name of the added user
+     */
+    @Override
+    public String addUser(String name, String surname) {
+        // Generate a random ID between 1 and 1000
+        long id = random.nextInt(1000) + 1;
+        String addedName = fakeRepo.insertUser(id, name, surname);
+        System.out.println(addedName + " added");
+        return addedName;
+    }
+
+
 
 
 }
