@@ -66,4 +66,21 @@ public class UserServiceTests {
         assertEquals(userName, result);
         verify(fakeRepo, times(1)).findUserById(userId);
     }
+
+    /**
+     * Test for the getUser method when user does not exist
+     */
+    @Test
+    void testGetUserWhenUserDoesNotExist() {
+        // Arrange
+        long userId = 999L;
+        when(fakeRepo.findUserById(userId)).thenReturn(null);
+
+        // Act
+        String result = userService.getUser(userId);
+
+        // Assert
+        assertNull(result);
+        verify(fakeRepo, times(1)).findUserById(userId);
+    }
 }
