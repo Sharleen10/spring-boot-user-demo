@@ -58,4 +58,21 @@ public class UserServiceImpl implements UserService{
         }
         return userName;
     }
+
+    /**
+     * Removes a user by ID
+     *
+     * @param id The ID of the user to remove
+     * @return The name of the removed user, or null if user not found
+     */
+    @Override
+    public String removeUser(long id) {
+        String removedName = fakeRepo.deleteUser(id);
+        if (removedName != null) {
+            System.out.println(removedName + " removed");
+        } else {
+            System.out.println("User with ID " + id + " not found");
+        }
+        return removedName;
+    }
 }
