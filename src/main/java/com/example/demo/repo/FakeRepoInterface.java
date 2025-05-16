@@ -23,4 +23,12 @@ public interface FakeRepoInterface {
      */
     String findUserById(long id);
 
+    /**
+     * Deletes a user from the repository
+     *
+     * @param id The ID of the user to delete
+     * @return The name of the deleted user, or null if not found
+     */
+    String deleteUser(long id);
+
 }
