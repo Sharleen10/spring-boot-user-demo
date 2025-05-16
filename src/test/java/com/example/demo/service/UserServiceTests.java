@@ -49,4 +49,75 @@ public class UserServiceTests {
         verify(fakeRepo, times(1)).insertUser(anyLong(), eq(name), eq(surname));
     }
 
+    /**
+     * Test for the getUser method when user exists
+     */
+    @Test
+    void testGetUserWhenUserExists() {
+        // Arrange
+        long userId = 1L;
+        String userName = "Leen";
+        when(fakeRepo.findUserById(userId)).thenReturn(userName);
+
+        // Act
+        String result = userService.getUser(userId);
+
+        // Assert
+        assertEquals(userName, result);
+        verify(fakeRepo, times(1)).findUserById(userId);
+    }
+
+    /**
+     * Test for the getUser method when user does not exist
+     */
+    @Test
+    void testGetUserWhenUserDoesNotExist() {
+        // Arrange
+        long userId = 999L;
+        when(fakeRepo.findUserById(userId)).thenReturn(null);
+
+        // Act
+        String result = userService.getUser(userId);
+
+        // Assert
+        assertNull(result);
+        verify(fakeRepo, times(1)).findUserById(userId);
+    }
+
+    /**
+     * Test for the removeUser method when user exists
+     */
+    @Test
+    void testRemoveUserWhenUserExists() {
+        // Arrange
+        long userId = 1L;
+        String userName = "Leen";
+        when(fakeRepo.deleteUser(userId)).thenReturn(userName);
+
+        // Act
+        String result = userService.removeUser(userId);
+
+        // Assert
+        assertEquals(userName, result);
+        verify(fakeRepo, times(1)).deleteUser(userId);
+    }
+
+    /**
+     * Test for the removeUser method when user does not exist
+     */
+    @Test
+    void testRemoveUserWhenUserDoesNotExist() {
+        // Arrange
+        long userId = 999L;
+        when(fakeRepo.deleteUser(userId)).thenReturn(null);
+
+        // Act
+        String result = userService.removeUser(userId);
+
+        // Assert
+        assertNull(result);
+        verify(fakeRepo, times(1)).deleteUser(userId);
+    }
+
+
 }
