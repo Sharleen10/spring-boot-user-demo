@@ -13,4 +13,20 @@ public interface UserService {
      * @return The name of the added user
      */
     String addUser(String name, String surname);
+
+    /**
+     * Gets a user by their ID
+     *
+     * @param id The user's ID
+     * @return The name of the user, or null if user not found
+     */
+    String getUser(long id);
+
+    /**
+     * Removes a user from the system
+     *
+     * @param id The ID of the user to remove
+     * @return The name of the removed user, or null if user not found
+     */
+    String removeUser(long id);
 }
